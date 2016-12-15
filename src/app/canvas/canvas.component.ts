@@ -11,11 +11,21 @@ export class CanvasComponent implements OnInit {
   canvas:any = null;
 
   addTail(){
-    console.log("Adding tail");
+    let canvas = this.canvas;
+
+    fabric.Image.fromURL('/assets/img/hair.png', function(oImg) {
+      oImg.scale(0.5); //.setFlipX(true);
+      canvas.add(oImg.set());
+    });
   }
 
   addMane(){
-    console.log("Adding mane");
+    let canvas = this.canvas;
+
+    fabric.Image.fromURL('/assets/img/tail.png', function(oImg) {
+      oImg.scale(0.5); //.setFlipX(true);
+      canvas.add(oImg.set());
+    });
   }
 
   constructor() {
