@@ -42,16 +42,27 @@ export class CanvasComponent implements OnInit {
     let canvas = this.canvas;
     let oImg = canvas.getActiveObject();
 
-    if (oImg === null || oImg === undefined) {
-      alert('Valitse väritettävä elementti!');
+    let activegroup = canvas.getActiveGroup();
+
+    if ((oImg === null || oImg === undefined) && activegroup === null) {
+      alert('Select element(s) to colorize!');
     } else {
       let filters = fabric.Image.filters;
 
-      oImg.filters[0] = new filters.Blend({
-        color: color
-      });
+      let selectedElements = [];
 
-      oImg.applyFilters(canvas.renderAll.bind(canvas));
+      if (activegroup === null) {
+        selectedElements = [oImg];
+      } else {
+        selectedElements = activegroup._objects;
+      }
+
+      for (let i=0; i<selectedElements.length; i++) {
+        selectedElements[i].filters[0] = new filters.Blend({
+          color: color
+        });
+        selectedElements[i].applyFilters(canvas.renderAll.bind(canvas));
+      }
     }
   }
 
@@ -68,7 +79,11 @@ export class CanvasComponent implements OnInit {
     let cWidth = 800;
     let cHeight = 400;
 
-    let canvas = new fabric.Canvas('c', {width: cWidth, height: cHeight});
+    let canvas = new fabric.Canvas('c', {
+      width: cWidth,
+      height: cHeight,
+      preserveObjectStacking: true
+    });
 
     fabric.Image.fromURL('/assets/img/body.png', function(oImg) {
       oImg.scale(0.5);
