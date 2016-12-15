@@ -3,8 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Haksu (yksisarvisen suunnittelupalvelu)</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.1/fabric.min.js"></script>
+
+    <style>
+        .canvas-container {
+            margin-bottom: 10px;
+            margin-right: 10px;
+            border: 0;
+            box-shadow: rgba(0,0,0,0.5) 0 0 5px;
+        }
+    </style>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function(event)
+        {
+            var canvas = new fabric.Canvas('c', {width: 800, height: 600});
+
+            fabric.Image.fromURL('src/assets/img/body.png', function(oImg) {
+                oImg.scale(0.5).setFlipX(true);
+                canvas.add(oImg);
+            });
+
+        });
+    </script>
 </head>
 <body>
+
+<canvas id="c"></canvas>
 
 </body>
 </html>
