@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-declare var fabric: any;
 
 @Component({
   selector: 'app-root',
@@ -7,11 +6,6 @@ declare var fabric: any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = fabric.version + 'Haksu (yksisarvisen suunnittelupalvelu :) )';
-
-  constructor() {
-    console.log(fabric.version);
-
-  }
+  title = 'Haksu (yksisarvisen suunnittelupalvelu :) )';
 }
 
