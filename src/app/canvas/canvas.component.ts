@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+declare var fabric: any;
 
 @Component({
   selector: 'app-canvas',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CanvasComponent implements OnInit {
 
-  constructor() { }
+  canvas:any = null;
+
+  constructor() {
+  }
 
   ngOnInit() {
+    this.canvas = new fabric.Canvas('c', {
+      backgroundColor: 'rgb(100,100,200)',
+    });
   }
 
 }
