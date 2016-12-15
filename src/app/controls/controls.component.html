@@ -4,3 +4,8 @@
     <button (click)="saveImage()">Save</button>
     <button (click)="resetCanvas()">Clear</button>
 </div>
+<div class="colors">
+    <input type="color" [(ngModel)]="color">
+    <button (click)="addColor()">Change color</button>
+    <button (click)="saveImage()"><img class="control-item" />Save</button>
+</div>
