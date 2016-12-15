@@ -68,14 +68,34 @@ export class CanvasComponent implements OnInit {
 
   saveImage() {
     let canvas = this.canvas;
-    //var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
     window.open(this.canvas.toDataURL('png'));
   }
 
-  constructor() {
+  resetCanvas() {
+    let canvas = this.canvas;
+    let oImg = canvas.getActiveObject();
+    let activegroup = canvas.getActiveGroup();
+
+    if ((oImg === null || oImg === undefined) && activegroup === null) {
+      alert('Select element(s) to delete!');
+    } else {
+      let filters = fabric.Image.filters;
+
+      let selectedElements = [];
+
+      if (activegroup === null) {
+        selectedElements = [oImg];
+      } else {
+        selectedElements = activegroup._objects;
+      }
+
+      for (let i = 0; i < selectedElements.length; i++) {
+        canvas.remove(selectedElements[i]);
+      }
+    }
   }
 
-  ngOnInit() {
+  initImage() {
     let cWidth = 800;
     let cHeight = 400;
 
@@ -96,6 +116,13 @@ export class CanvasComponent implements OnInit {
       }));
     });
 
-    this.canvas = canvas;
+    return canvas;
+  }
+
+  constructor() {
+  }
+
+  ngOnInit() {
+    this.canvas = this.initImage();
   }
 }

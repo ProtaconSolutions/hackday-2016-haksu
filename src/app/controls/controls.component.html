@@ -1,10 +1,11 @@
 <div class="controls">
     <button (click)="addTail()"><img class="control-item" src="/assets/img/hair.png" /></button>
     <button (click)="addMane()"><img class="control-item" src="/assets/img/tail.png" /></button>
+    <button (click)="saveImage()">Save</button>
+    <button (click)="resetCanvas()">Delete</button>
     <button (click)="addHorn()"><img class="control-item" src="/assets/img/horn.png" /></button>
 </div>
 <div class="colors">
     <input type="color" [(ngModel)]="color">
     <button (click)="addColor()">Change color</button>
-    <button (click)="saveImage()"><img class="control-item" />Save</button>
 </div>
