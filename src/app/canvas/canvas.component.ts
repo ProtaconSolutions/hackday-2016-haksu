@@ -14,7 +14,7 @@ export class CanvasComponent implements OnInit {
     let canvas = this.canvas;
 
     fabric.Image.fromURL('/assets/img/hair.png', function(oImg) {
-      oImg.scale(0.5); //.setFlipX(true);
+      oImg.scale(0.5);
       canvas.add(oImg.set());
     });
   }
@@ -23,9 +23,26 @@ export class CanvasComponent implements OnInit {
     let canvas = this.canvas;
 
     fabric.Image.fromURL('/assets/img/tail.png', function(oImg) {
-      oImg.scale(0.5); //.setFlipX(true);
+      oImg.scale(0.5);
       canvas.add(oImg.set());
     });
+  }
+
+  addColor(color: string){
+    let canvas = this.canvas;
+    let oImg = canvas.getActiveObject();
+
+    if (oImg === null || oImg === undefined) {
+      alert('Valitse väritettävä elementti!');
+    } else {
+      let filters = fabric.Image.filters;
+
+      oImg.filters[0] = new filters.Blend({
+        color: color
+      });
+
+      oImg.applyFilters(canvas.renderAll.bind(canvas));
+    }
   }
 
   constructor() {
@@ -38,7 +55,7 @@ export class CanvasComponent implements OnInit {
     let canvas = new fabric.Canvas('c', {width: cWidth, height: cHeight});
 
     fabric.Image.fromURL('/assets/img/body.png', function(oImg) {
-      oImg.scale(0.5); //.setFlipX(true);
+      oImg.scale(0.5);
       let width = oImg.getWidth();
       let height = oImg.getHeight();
 
@@ -49,7 +66,5 @@ export class CanvasComponent implements OnInit {
     });
 
     this.canvas = canvas;
-
   }
-
 }
