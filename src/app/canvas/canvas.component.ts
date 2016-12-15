@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-declare var fabric: any;
+declare var fabric, window: any;
 
 @Component({
   selector: 'app-canvas',
@@ -26,6 +26,12 @@ export class CanvasComponent implements OnInit {
       oImg.scale(0.5); //.setFlipX(true);
       canvas.add(oImg.set());
     });
+  }
+
+  saveImage() {
+    let canvas = this.canvas;
+    //var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    window.open(this.canvas.toDataURL('png'));
   }
 
   constructor() {
