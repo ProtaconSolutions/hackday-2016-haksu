@@ -72,7 +72,27 @@ export class CanvasComponent implements OnInit {
   }
 
   resetCanvas() {
+    let canvas = this.canvas;
+    let oImg = canvas.getActiveObject();
+    let activegroup = canvas.getActiveGroup();
 
+    if ((oImg === null || oImg === undefined) && activegroup === null) {
+      alert('Select element(s) to delete!');
+    } else {
+      let filters = fabric.Image.filters;
+
+      let selectedElements = [];
+
+      if (activegroup === null) {
+        selectedElements = [oImg];
+      } else {
+        selectedElements = activegroup._objects;
+      }
+
+      for (let i = 0; i < selectedElements.length; i++) {
+        canvas.remove(selectedElements[i]);
+      }
+    }
   }
 
   initImage() {
