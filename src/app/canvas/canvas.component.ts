@@ -10,6 +10,14 @@ export class CanvasComponent implements OnInit {
 
   canvas:any = null;
 
+  addTail(){
+    console.log("Adding tail");
+  }
+
+  addMane(){
+    console.log("Adding mane");
+  }
+
   constructor() {
   }
 
