@@ -4,10 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { AppComponent } from './app.component';
+import { CanvasComponent } from './canvas/canvas.component';
+import { ControlsComponent } from './controls/controls.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CanvasComponent,
+    ControlsComponent
   ],
   imports: [
     BrowserModule,
