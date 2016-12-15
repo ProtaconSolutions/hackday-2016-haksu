@@ -30,14 +30,14 @@ export class CanvasComponent implements OnInit {
 
   saveImage() {
     let canvas = this.canvas;
-    //var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
     window.open(this.canvas.toDataURL('png'));
   }
 
-  constructor() {
+  resetCanvas() {
+
   }
 
-  ngOnInit() {
+  initImage() {
     let cWidth = 800;
     let cHeight = 400;
 
@@ -54,8 +54,14 @@ export class CanvasComponent implements OnInit {
       }));
     });
 
-    this.canvas = canvas;
+    return canvas;
+  }
 
+  constructor() {
+  }
+
+  ngOnInit() {
+    this.canvas = this.initImage();
   }
 
 }
