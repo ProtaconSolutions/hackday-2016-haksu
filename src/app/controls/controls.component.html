@@ -1,12 +1,14 @@
 <div class="controls">
     <button (click)="addTail()"><img class="control-item" src="/assets/img/hair.png" /></button>
     <button (click)="addMane()"><img class="control-item" src="/assets/img/tail.png" /></button>
-    <button (click)="saveImage()">Save</button>
-    <button (click)="resetCanvas()">Delete</button>
     <button (click)="addHorn()"><img class="control-item" src="/assets/img/horn.png" /></button>
     <button (click)="addHorn2()"><img class="control-item" src="/assets/img/horn2.png" /></button>
 </div>
-<div class="colors">
+<button (click)="resetCanvas()">Delete selected element</button>
+<div class="buttons">
     <input type="color" [(ngModel)]="color">
-    <button (click)="addColor()">Change color</button>
+    <button (click)="addColor()">Change element color</button>
+    <div class="save">
+        <button (click)="saveImage()">Save your unicorn! <span>&#x2764;</span></button>
+    </div>
 </div>

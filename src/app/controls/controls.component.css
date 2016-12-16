@@ -1,3 +1,4 @@
-img.control-item {
+.control-item {
+    height: 80px;
     max-height: 80px;
 }
