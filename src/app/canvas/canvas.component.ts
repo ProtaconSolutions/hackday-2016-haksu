@@ -83,23 +83,21 @@ export class CanvasComponent implements OnInit {
   resetCanvas() {
     let canvas = this.canvas;
     let oImg = canvas.getActiveObject();
-    let activegroup = canvas.getActiveGroup();
+    let activeGroup = canvas.getActiveGroup();
 
-    if ((oImg === null || oImg === undefined) && activegroup === null) {
+    if ((oImg === null || oImg === undefined) && activeGroup === null) {
       alert('Select element(s) to delete!');
+    } else if (activeGroup !== null) {
+      alert('You can remove only one element at time.');
     } else {
-      let filters = fabric.Image.filters;
 
-      let selectedElements = [];
-
-      if (activegroup === null) {
-        selectedElements = [oImg];
+      // Works if only one element is selected, crashes if more elements are selected
+      // Works outside angular app
+      if(canvas.getActiveGroup()){
+        canvas.getActiveGroup().forEachObject(function(o){ canvas.remove(o) });
+        canvas.discardActiveGroup().renderAll();
       } else {
-        selectedElements = activegroup._objects;
-      }
-
-      for (let i = 0; i < selectedElements.length; i++) {
-        canvas.remove(selectedElements[i]);
+        canvas.remove(canvas.getActiveObject());
       }
     }
   }
