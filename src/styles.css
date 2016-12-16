@@ -1,7 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #ccc;
+    text-align: center;
+}
+.container {
+    padding: 0;
+    margin: auto;
+    display: block;
+    width: 800px;
+}
 .canvas-container {
     margin-bottom: 10px;
     margin-right: 10px;
     border: 0;
     box-shadow: rgba(0,0,0,0.5) 0 0 5px;
+    background: #fff;
+}
+
+button {
+    font-family: 'Open Sans', sans-serif;
+    margin: 5px 0;
+}
+
+.save button {
+    width: 250px;
+    line-height: 50px;
+    font-size: 20px;
+}
+
+.save button span {
+    color: deeppink;
+}
+
+h1 {
+    margin: 10px 0;
+    font-size: 60px;
+    font-family: Oswald, sans-serif;
 }
