@@ -38,6 +38,15 @@ export class CanvasComponent implements OnInit {
     });
   }
 
+  addHorn2(){
+    let canvas = this.canvas;
+
+    fabric.Image.fromURL('/assets/img/horn2.png', function(oImg) {
+      oImg.scale(0.5);
+      canvas.add(oImg.set());
+    });
+  }
+
   addColor(color: string){
     let canvas = this.canvas;
     let oImg = canvas.getActiveObject();
