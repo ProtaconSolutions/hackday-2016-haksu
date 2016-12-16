@@ -23,12 +23,28 @@
                 oImg.scale(0.5).setFlipX(true);
                 canvas.add(oImg);
             });
+            fabric.Image.fromURL('src/assets/img/horn.png', function(oImg) {
+                oImg.scale(0.5).setFlipX(true);
+                canvas.add(oImg);
+            });
+
+
+            var deleteSelectedObject = document.getElementById('delete-item');
+            deleteSelectedObject.onclick = function()
+            {
+                if(canvas.getActiveGroup()){
+                    canvas.getActiveGroup().forEachObject(function(o){ canvas.remove(o) });
+                    canvas.discardActiveGroup().renderAll();
+                } else {
+                    canvas.remove(canvas.getActiveObject());
+                }
+            };
 
         });
     </script>
 </head>
 <body>
-
+<button id="delete-item">pois</button>
 <canvas id="c"></canvas>
 
 </body>
