@@ -67,12 +67,29 @@ export class CanvasComponent implements OnInit {
       }
 
       for (let i=0; i<selectedElements.length; i++) {
-        selectedElements[i].filters[0] = new filters.Blend({
-          color: color
-        });
-        selectedElements[i].applyFilters(canvas.renderAll.bind(canvas));
+        if(selectedElements[i].get('type')==="text") {
+          selectedElements[i].setColor(color);
+        } else {
+          selectedElements[i].filters[0] = new filters.Blend({
+            color: color
+          });
+          selectedElements[i].applyFilters(canvas.renderAll.bind(canvas));
+        }
       }
+
+      canvas.renderAll();
     }
+  }
+
+  addText(text: string) {
+    let canvas = this.canvas;
+    let oText = new fabric.Text(text, {
+      fontFamily: 'Arial'
+    });
+    canvas.add(oText.set({
+      top: 20,
+      left: (canvas.width - oText.getWidth()) / 2
+    }));
   }
 
   saveImage() {
