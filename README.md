@@ -1,7 +1,9 @@
 # hackday-2016-haksu
+Protacon Hackday project, not in active development.
+
 Hautakiven (yksisarvisen) suunnittelupalvelu
 
-##Minimum Viable Product
+## Minimum Viable Product
 
 Sovelluksella pystyy...
 
@@ -15,12 +17,12 @@ Ja lisäksi olis ihan kiva jos...
 * kuvan saisi talteen johonkin
 * drag&drop
 
-##Teknologiat
+## Teknologiat
 
 * [Angular 2](https://angular.io/) hoitaa ympäröivän arkkitehtuurin
 * [Fabricjs](http://fabricjs.com/) hallitsee canvasia
 
-##Jatkokehitys
+## Jatkokehitys
 
 * tuodaan templaattikuvat backendistä
 * omien templaattien luominen
